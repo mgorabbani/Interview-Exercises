@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 import { expect } from "chai";
-import { detectSums } from "./utils";
+import { detectSumsTimeEfficient as detectSums } from "./utils";
 
 describe("Detect sums", () => {
   it("should fail if input is not an array", () => {

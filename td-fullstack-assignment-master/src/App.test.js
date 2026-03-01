@@ -59,4 +59,25 @@ describe("App", () => {
     const errorEl = screen.getByText("Write something");
     expect(errorEl).toHaveClass("App-error");
   });
+
+  it("shows error message for non-numeric input", () => {
+    render(<App />);
+    const input = screen.getByRole("textbox");
+    fireEvent.change(input, { target: { value: "a,b,c" } });
+    fireEvent.submit(input.closest("form"));
+
+    expect(
+      screen.getByText("Invalid input: all values must be numbers"),
+    ).toBeInTheDocument();
+  });
+  it("shows error message for less than 3 numbers", () => {
+    render(<App />);
+    const input = screen.getByRole("textbox");
+    fireEvent.change(input, { target: { value: "1,2" } });
+    fireEvent.submit(input.closest("form"));
+
+    expect(
+      screen.getByText("At least 3 numbers are required to find sums"),
+    ).toBeInTheDocument();
+  });
 });

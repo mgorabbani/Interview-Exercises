@@ -54,6 +54,12 @@ export function calculateResult(input) {
   let error = null;
   let result = "";
   try {
+    if (parsedInput.some(isNaN)) {
+      throw new Error("Invalid input: all values must be numbers");
+    }
+    if (parsedInput.length < 3) {
+      throw new Error("At least 3 numbers are required to find sums");
+    }
     result = detectSumsTimeEfficient(parsedInput);
   } catch (e) {
     error = e.message;
