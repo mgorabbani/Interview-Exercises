@@ -1,4 +1,7 @@
-export const detectSums = (array = []) => {
+export const detectSums = (array) => {
+  if (!Array.isArray(array)) {
+    throw new Error("Input is not an array");
+  }
   const results = [];
 
   for (let pA = 0; pA < array.length; pA++) {

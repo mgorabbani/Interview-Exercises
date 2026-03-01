@@ -40,7 +40,7 @@ class App extends Component {
           {!error && (
             <>
               <p>Result for input '{userInput}' is</p>
-              <ol>
+              <ol data-testid="result-list">
                 {result.map((res, index) => (
                   <li key={index}>
                     {userInput[res.pA]} + {userInput[res.pB]} ={" "}
